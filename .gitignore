@@ -1,0 +1,12 @@
+# 실행 파일 (확장자가 없는 결과물)
+main
+*.out
+*.exe
+
+# 빌드 관련 폴더 및 파일
+build/
+.vscode/
+
+# 운영체제 생성 파일
+.DS_Store
+Thumbs.db
