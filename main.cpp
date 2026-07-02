@@ -31,4 +31,26 @@
 // -main
 // alarm 클래스형 객체1 선언, print함수 호출
 // alarm 클래스형 객체2 초기값을 넣어서 선언, print함수 호출
-// 비멤버함수 compareTimeOfDay를 호출하여 그 리턴값이 true면 same, false면 different를 콘솔창으로 출력
+// 비멤버함수 compareTimeOfDay를 호출하여 그 리턴값이 true면 same, false면 different를 표준 stream(콘솔창)으로 출력
+
+#include "alarm.h"
+// #include "timeOfDay" 는 안해도 됨
+
+namespace ChoEunhye2372048
+{
+    bool compareTimeOfDay(const timeOfDay& t1, const timeOfDay& t2)
+    {
+        return t1.getHour() == t2.getHour() && t1.getMinute() == t2.getMinute()
+    }
+}
+
+int main()
+{
+    using namespace ChoEunhye2372048;
+    alarm a1;a1.print();
+    alarm a2{timeOfDay{11,44},1};a2.print();
+
+    if(compareTimeOfDay(a1.gethWakeTime(), a2.gethWakeTime())) std::cout << "same\n";
+    else std::coud << "different\n"
+};
+
