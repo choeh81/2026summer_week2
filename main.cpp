@@ -40,7 +40,7 @@ namespace ChoEunhye2372048
 {
     bool compareTimeOfDay(const timeOfDay& t1, const timeOfDay& t2)
     {
-        return t1.getHour() == t2.getHour() && t1.getMinute() == t2.getMinute()
+        return t1.getHour() == t2.getHour() && t1.getMinute() == t2.getMinute();
     }
 }
 
@@ -51,6 +51,6 @@ int main()
     alarm a2{timeOfDay{11,44},1};a2.print();
 
     if(compareTimeOfDay(a1.gethWakeTime(), a2.gethWakeTime())) std::cout << "same\n";
-    else std::coud << "different\n"
+    else std::cout << "different\n";
 };
 

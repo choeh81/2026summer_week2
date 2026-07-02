@@ -39,15 +39,15 @@ namespace ChoEunhye2372048
                 testMinute();
             }
 
-            void input
-            (
+            void input()
+            {
                 std::cout << "Enter hour(0~23): ";
                 std::cin >> hour;
-                void testHour();
+                testHour();
                 std::cout << "Enter minute(0~59): ";
                 std::cin >> minute;
-                void testMinute();
-            );
+                testMinute();
+            };
         
             void setHour(int h) 
             {
@@ -62,7 +62,7 @@ namespace ChoEunhye2372048
             void print() const
             {
                 if(hour<10) std::cout << "0";
-                std::cout << hour << ":" 
+                std::cout << hour << ":" ;
                 if(minute<10) std::cout << "0";
                 std::cout << minute;
             }
