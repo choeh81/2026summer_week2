@@ -14,16 +14,14 @@ namespace ChoEunhye2372048
         private:
             int hour{};
             int minute{};
-            void testHour()
-            {
+            void testHour(){
                 if( (hour<0) || (hour>23) )
                 {
                     std::cout << "Invaild hour\n";
                     std::exit(1);
-                }
+                } 
             };
-            void testMinute()
-            {
+            void testMinute(){
                 if( (minute<0) || (minute>59) )
                 {
                     std::cout << "Invaild minute\n";
@@ -32,15 +30,11 @@ namespace ChoEunhye2372048
             };
 
         public:
-            timeOfDay(int h = 1, int m = 1)
-            : hour{h}, minute{m}
-            {
-                testHour();
-                testMinute();
-            }
+            timeOfDay(int h = 0, int m = 0) : hour{h}, minute{m}
+            {testHour();
+            testMinute();}
 
-            void input()
-            {
+            void input(){
                 std::cout << "Enter hour(0~23): ";
                 std::cin >> hour;
                 testHour();
@@ -49,18 +43,15 @@ namespace ChoEunhye2372048
                 testMinute();
             };
         
-            void setHour(int h) 
-            {
+            void setHour(int h) {
                 hour = h; 
                 testHour();
             }
-            void setMinute(int m)
-            {
+            void setMinute(int m){
                 minute = m;
                 testMinute();
             }
-            void print() const
-            {
+            void print() const{
                 if(hour<10) std::cout << "0";
                 std::cout << hour << ":" ;
                 if(minute<10) std::cout << "0";
@@ -68,7 +59,6 @@ namespace ChoEunhye2372048
             }
             int getHour() const {return hour;}
             int getMinute() const {return minute;}
-            
     };
 };
 
