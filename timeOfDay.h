@@ -50,19 +50,38 @@ namespace ChoEunhye2372048
 
 
 
-        timeOfDay operator++(){
-            ++minute; // 0~59 사이의 값이어야 함, 59인 경우는 시간이 +1 되어야함
+        // timeOfDay operator++(){
+        //     ++minute; // 0~59 사이의 값이어야 함, 59인 경우는 시간이 +1 되어야함
+        //     if ( minute == 60 ) { minute = 0; ++hour; }// 0~23 사이의 값이어야 함, 넘어가면 0으로 리셋
+        //     if( hour == 24 ) { hour = 0; }
+        //     return timeOfDay{hour, minute};
+        // }
+        // timeOfDay operator++(int){
+        //     timeOfDay temp{hour, minute};
+        //     minute++;
+        //     if ( minute == 60 ) { minute = 0; ++hour; }// 0~23 사이의 값이어야 함, 넘어가면 0으로 리셋
+        //     if( hour == 24 ) { hour = 0; }
+        //     return temp;
+        // }
+        timeOfDay& operator++()
+        {   
+            ++minute;
             if ( minute == 60 ) { minute = 0; ++hour; }// 0~23 사이의 값이어야 함, 넘어가면 0으로 리셋
             if( hour == 24 ) { hour = 0; }
-            return timeOfDay{hour, minute};
+            return *this;
         }
         timeOfDay operator++(int){
-            timeOfDay temp{hour, minute};
-            minute++;
-            if ( minute == 60 ) { minute = 0; ++hour; }// 0~23 사이의 값이어야 함, 넘어가면 0으로 리셋
-            if( hour == 24 ) { hour = 0; }
+            timeOfDay temp{*this};
+            ++(*this);
             return temp;
         }
+        timeOfDay& operator+=(int m){
+            minute += m;
+            if ( minute >= 60 ) { hour += minute/60; minute %= 60; }// 0~23 사이의 값이어야 함, 넘어가면 0으로 리셋
+            if( hour >= 24 ) { hour %= 24; }
+            return *this;
+        }
+        
         
         friend std::istream& operator>>(std::istream& is, timeOfDay& t){
         //std::cin (input()) -> is
@@ -93,7 +112,7 @@ namespace ChoEunhye2372048
             int totalMinute{minute1+minute2};
             int newHour{totalMinute / 60};
             int newMinute{totalMinute % 60}; //0~23이어야 함
-            if(newHour>24) newHour = newHour %= 24; // = newHour % 24
+            if(newHour>=24) newHour = newHour %= 24; // = newHour % 24
             return timeOfDay{newHour, newMinute};
         }
 
